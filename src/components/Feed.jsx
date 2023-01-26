@@ -4,17 +4,11 @@ import { Box, Stack, Typography } from '@mui/material';
 import { fetchFromAPI } from '../utils/fetchFromAPI';
 import { Videos, Sidebar } from './';
 
-let renderer = 1;
-
 const Feed = () => {
   const [selectedCategory, setSelectedCategory] = useState('New');
   const [videos, setVideos] = useState(null);
 
   useEffect(() => {
-    if (renderer < 2) {
-      renderer++;
-      return;
-    }
     setVideos(null);
 
     fetchFromAPI(`search?q=${selectedCategory}&part=snippet`).then(
